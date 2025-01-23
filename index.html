@@ -25,18 +25,9 @@
   </div>
 </section>
 
-<!-- <section class="section">
-  <div class="container">
-    <h2 class="title">Abstract</h2>
-    <p>
-      In this project, we present a tightly coupled LiDAR-IMU-leg odometry method, designed to address challenges in featureless environments and deformable terrains. Our approach incorporates a neural leg kinematics model that utilizes tactile information (foot reaction force) to account for nonlinear interactions between the robot's feet and the ground. This model is trained online to adapt to changes in robot weight and terrain conditions, ensuring robust odometry estimation. The method was validated in real-world experiments using a quadruped robot, demonstrating significant improvements over state-of-the-art approaches.
-    </p>
-  </div>
-</section> -->
+
 <section class="section has-background-light">
   <div class="container">
-    <!-- 不要な body タグを削除 -->
-    <!-- text-align: center; を直接 div に指定 -->
     <div style="text-align: center; margin: 0; padding: 0;">
       <img src="static/images/cover_page_gif.gif" alt="Cover Page GIF" style="max-width: 70%; height: auto;">
     </div>
@@ -48,12 +39,7 @@
     <h2 class="title">Overview</h2>
     <p>Legged robots have significant potential for transportation and inspection tasks in challenging environments (e.g., rough terrain) thanks to their superior locomotion capabilities compared to wheeled robots. Featureless environments (e.g., tunnels, long corridors, alleys, lunar surfaces) and deformable terrains (e.g., sandy beaches and gravel) are challenging environments for exteroceptive sensors (e.g., LiDAR, camera)-based and kinematic models-based odometry estimation, respectively.</p>
     <p>To deal with these challenges, we presented an odometry estimation algorithm that fuses LiDAR-IMU constraints and online trainable leg kinematic constraints incorporating tactile information (<em><strong>neural leg kinematics model</strong></em>) in the proposed factor graph based on tightly coupled way. We propose the <em><strong>neural adaptive leg odometry factor</strong></em> to solve simultaneously solve odometry estimation and online training of the neural leg kinematics. This model's online training enhances its adaptability to changes in the weight loads of a legged robot and terrain conditions. This enables the effective utilization of foot tactile information (reaction forces) for motion prediction because foot reaction forces vary with both robot weight loads and terrain conditions. To balance accuracy and computational costs for training the network, we divided the model into two models trained online (<em><strong>online learning model</strong></em>) and offline (<em><strong>offline learning model</strong></em>).</p>
-    <!-- <ul>
-      <li>Introduction to LiDAR-IMU-Leg Odometry</li>
-      <li>Challenges in Featureless Environments</li>
-      <li>Proposed Neural Leg Kinematics Model</li>
-      <li>Experimental Results and Insights</li>
-    </ul> -->
+
     <div class="container" style="text-align: center;">
       <img src="static/images/overview.png" alt="Overview" style="display: block; margin: 20px auto; max-width: 80%; height: auto;">
       <h3 class="subtitle" style="text-align: left; margin-top: 10px; margin-bottom: 20px; max-width: 80%; margin-left: auto; margin-right: auto;">
@@ -95,7 +81,6 @@
     <div class="container is-max-desktop">
       <div class="hero-body">
         <video poster="" id="tree" autoplay controls muted loop height="100%">
-          <!-- Your video here -->
           <source src="static/videos/lio_with_mid360_editted.mp4"
           type="video/mp4">
         </video>
@@ -144,7 +129,6 @@
     <div class="container is-max-desktop">
       <div class="hero-body">
         <video poster="" id="tree" autoplay controls muted loop height="100%">
-          <!-- Your video here -->
           <source src="static/videos/sunahama_walk_no_black_converted.mp4"
           type="video/mp4">
         </video>
@@ -208,7 +192,6 @@
       </video>
     </div>
 
-    <!-- <video src="static/videos/sunahama_walk_no_black.mp4" controls loop autoplay muted style="display: block; margin: 20px auto; max-width: 100%; height: auto;"></video> -->
     <h2 class="title is-4 has-text-centered">ATEs and RTEs of the Odometry Algorithms</h2>
     <table class="table is-bordered is-striped is-hoverable is-fullwidth has-text-centered">
       <thead>
@@ -306,8 +289,6 @@
       <li>[1] M. Fourmy, T. Flayols, P.-A. Léziart, N. Mansard, and J. Solà, "Contact forces preintegration for estimation in legged robotics using factor graphs," in <em>2021 IEEE International Conference on Robotics and Automation (ICRA)</em>, 2021, pp. 1372–1378.</li>
       <li>[2] J. Kang, H. Kim, and K.-S. Kim, "VIEW: Visual-inertial external wrench estimator for legged robot," <em>IEEE Robotics and Automation Letters</em>, 2023, pp. 8366–8377.</li>
       <li>[3] A. Vanderkop, N. Kottege, T. Peynot, and P. Corke, "A novel model of interaction dynamics between legged robots and deformable terrain," in <em>2022 International Conference on Robotics and Automation (ICRA)</em>, 2022, pp. 6635–6641.</li>
-      <!-- <li>[3] D. Wisth, M. Camurri, and M. Fallon, "VILENS: Visual, inertial, lidar, and leg odometry for all-terrain legged robots," <em>IEEE Transactions on Robotics</em>, vol. 39, no. 1, pp. 309–326, 2022.</li>
-      <li>[4] T. Okawara, K. Koide, S. Oishi, M. Yokozuka, A. Banno, K. Uno, and K. Yoshida, "Tightly-coupled LiDAR-IMU-wheel odometry with an online neural kinematic model learning via factor graph optimization," <em>arXiv preprint arXiv:2407.08907</em>, 2024.</li> -->
     </ul>
   </div>
 </section>
