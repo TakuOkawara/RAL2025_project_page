@@ -48,7 +48,7 @@
     <div class="container" style="text-align: center;">
       <img src="static/images/overview.png" alt="Overview" style="display: block; margin: 20px auto; max-width: 80%; height: auto;">
       <h3 class="subtitle" style="text-align: left; margin-top: 10px; margin-bottom: 20px; max-width: 80%; margin-left: auto; margin-right: auto;">
-        Overview of the proposed method, which simultaneously solve <em><strong>odometry estimation</strong></em> and <em><strong>online training of the neural leg kinematics model</strong></em> on a unified factor graph.
+        Overview of the proposed method, which simultaneously solves <em><strong>odometry estimation</strong></em> and <em><strong>online training of the neural leg kinematics model</strong></em> on a unified factor graph.
       </h3>
     </div>
   </div>
@@ -63,7 +63,7 @@
 
     <div class="container" style="display: flex; flex-direction: column; align-items: center; gap: 0px;">
       <img src="static/images/principle.png" alt="Principle" style="max-width: 80%; height: auto; margin-top: 20px;">
-      <h3 class="subtitle" style="text-align: left;">Principle of foot tactile information (foot reaction force)-based motion prediction</h3>
+      <h3 class="subtitle" style="text-align: left;">Principle of foot tactile information (foot reaction force)-based motion prediction.</h3>
     </div>
   </div>
 </section>
@@ -76,9 +76,11 @@
       As shown in the overview image, the neural leg kinematics model is divided into the <em><strong>online learning model</strong></em> and the <em><strong>offline learning model</strong></em>. The offline learning model is trained by the 28 types of datasets shown in the following image. We obtained the reference twist of the offline batch learning based on LiDAR-IMU odometry using the omnidirectional FOV LiDAR (Livox MID-360).
     </p>
 
-    <div class="container">
-      <img src="static/images/offline_learning_datasets.png" alt="offline_learning_datasets" style="display: block; margin: 20px auto; max-width: 80%; height: auto;">
-      <h3 class="subtitle has-text-centered">Datasets used for our offline training procedure of the neural leg kinematics model (i.e., obtain the offline learning model).</h3>
+    <div class="container" style="text-align: center;">
+      <img src="static/images/offline_learning_datasets.png" alt="offline_learning_datasets" style="display: block; margin: 10px auto; max-width: 80%; height: auto;">
+      <h3 class="subtitle" style="text-align: left; margin-top: 0px; max-width: 80%; margin-left: auto; margin-right: auto;">
+        Datasets used for our offline training procedure of the neural leg kinematics model (i.e., obtain the offline learning model).
+      </h3>
     </div>
 
     <div class="container is-max-desktop">
@@ -104,7 +106,7 @@
       As shown in the overview image, the online learning model of the neural leg kinematics model is trained online with odometry estimation to retain the both consistency. To jointly conduct odometry estimation and online learning on a unified factor graph, we propose the <em><strong>neural adaptive leg odometry factor</strong></em>, which is a constraint related to a robot pose and MLP parameter of the online learning model. Note that the offline learning is fixed during the odometry estimation (online learning procedure).
     </p>
     <p>
-      The objective function is defined by the sum of LiDAR-based (Matching cost factor), IMU-based (IMU preintegration factor), the neural leg kinematics model-based motion constraints (neural adaptive leg odometry factor), and some constraints (e.g., prior factor) as follows. Therefore, we optimize this objective function with ISAM2 optimizer to perform our state estimation.
+      The objective function <em>e</em><sup>ALL</sup> is defined by the sum of LiDAR-based (Matching cost factor), IMU-based (IMU preintegration factor), the neural leg kinematics model-based motion constraints (neural adaptive leg odometry factor), and some constraints (e.g., prior factor) as follows. Therefore, we optimize this objective function <em>e</em><sup>ALL</sup> with ISAM2 optimizer to perform our state estimation.
     </p>
 
     <div class="container">
