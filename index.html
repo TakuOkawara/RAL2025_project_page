@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Tightly-Coupled LiDAR-IMU-Leg Odometry with Online Learned Leg Kinematics Incorporating Foot Tactile Information">
+  <meta property="og:title" content="Tightly-Coupled LiDAR-IMU-Leg Odometry with Online Learned Leg Kinematics Incorporating Foot Tactile Information"/>
+  <meta property="og:description" content="An odometry estimation method robust to featureless environments and deformable terrains."/>
+  <meta property="og:url" content="YOUR_PROJECT_PAGE_URL"/>
+  <meta property="og:image" content="static/image/your_banner_image.png" />
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+
+  <title>Tightly-Coupled LiDAR-IMU-Leg Odometry with Online Learned Leg Kinematics Incorporating Foot Tactile Information</title>
+  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h1 class="title">Tightly-Coupled LiDAR-IMU-Leg Odometry with<br>Online Learned Leg Kinematics Incorporating Foot Tactile Information</h1>
+    </div>
+  </div>
+</section>
+
+<!-- <section class="section">
+  <div class="container">
+    <h2 class="title">Abstract</h2>
+    <p>
+      In this project, we present a tightly coupled LiDAR-IMU-leg odometry method, designed to address challenges in featureless environments and deformable terrains. Our approach incorporates a neural leg kinematics model that utilizes tactile information (foot reaction force) to account for nonlinear interactions between the robot's feet and the ground. This model is trained online to adapt to changes in robot weight and terrain conditions, ensuring robust odometry estimation. The method was validated in real-world experiments using a quadruped robot, demonstrating significant improvements over state-of-the-art approaches.
+    </p>
+  </div>
+</section> -->
+
+<section class="section">
+  <div class="container">
+    <h2 class="title">Overview</h2>
+    <p>Legged robots have significant potential for transportation and inspection tasks in challenging environments (e.g., rough terrain) thanks to their superior locomotion capabilities compared to wheeled robots. Featureless environments (e.g., tunnels, long corridors, alleys, lunar surfaces) and deformable terrains (e.g., sandy beaches and gravel) are challenging environments for exteroceptive sensors (e.g., LiDAR, camera)-based and kinematic models-based odometry estimation, respectively.</p>
+    <p>To deal with these challenges, we presented an odometry estimation algorithm that fuses LiDAR-IMU constraints and online trainable leg kinematic constraints incorporating tactile information (<em><strong>neural leg kinematics model</strong></em>) in the proposed factor graph based on tightly coupled way. We propose the <em><strong>neural adaptive leg odometry factor</strong></em> to solve simultaneously solve odometry estimation and online training of the neural leg kinematics. This model's online training enhances its adaptability to changes in the weight loads of a legged robot and terrain conditions. This enables the effective utilization of foot tactile information (reaction forces) for motion prediction because foot reaction forces vary with both robot weight loads and terrain conditions. To balance accuracy and computational costs for training the network, we divided the model into two models trained online (<em><strong>online learning model</strong></em>) and offline (<em><strong>offline learning model</strong></em>).</p>
+    <!-- <ul>
+      <li>Introduction to LiDAR-IMU-Leg Odometry</li>
+      <li>Challenges in Featureless Environments</li>
+      <li>Proposed Neural Leg Kinematics Model</li>
+      <li>Experimental Results and Insights</li>
+    </ul> -->
+    <div class="container" style="text-align: center;">
+      <img src="static/images/overview.png" alt="Overview" style="display: block; margin: 20px auto; max-width: 80%; height: auto;">
+      <h3 class="subtitle" style="text-align: left; margin-top: 10px; margin-bottom: 20px; max-width: 80%; margin-left: auto; margin-right: auto;">
+        Overview of the proposed method, which simultaneously solve <em><strong>odometry estimation</strong></em> and <em><strong>online training of the neural leg kinematics model</strong></em> on a unified factor graph.
+      </h3>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="title">Why is foot tactile information (foot reaction force) incorporated into the neural leg kinematics model?</h2>
+    <p>
+      Foot tactile information (foot reaction force)-based motion prediction is performed by: <em><strong>1) estimating the acceleration induced by the reaction force by dividing this reaction force by the robot's mass</strong></em>, and 2) estimating the robot's velocity by integrating this acceleration [1][2]. Therefore, adaptation to robot weight loads is needed to effectively use foot tactile information for generic motion prediction based on neural leg kinematics model. This adaptation is important for some tasks, such as delivery and transportation, where the robot's weight load can change mid-application. Therefore, <em><strong>we train the neural leg kinematics model online to adapt to robot weight loads</strong></em>.
+    </p>
+
+    <div class="container" style="display: flex; flex-direction: column; align-items: center; gap: 0px;">
+      <img src="static/images/principle.png" alt="Principle" style="max-width: 80%; height: auto; margin-top: 20px;">
+      <h3 class="subtitle" style="text-align: left;">Principle of foot tactile information (foot reaction force)-based motion prediction</h3>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container">
+    <h2 class="title">Offline training of the neural leg kinematics model</h2>
+    <p>
+      As shown in the overview image, the neural leg kinematics model is divided into the <em><strong>online learning model</strong></em> and the <em><strong>offline learning model</strong></em>. The offline learning model is trained by the 28 types of datasets shown in the following image. We obtained the reference twist of the offline batch learning based on LiDAR-IMU odometry using the omnidirectional FOV LiDAR (Livox MID-360).
+    </p>
+
+    <div class="container">
+      <img src="static/images/offline_learning_datasets.png" alt="offline_learning_datasets" style="display: block; margin: 20px auto; max-width: 80%; height: auto;">
+      <h3 class="subtitle has-text-centered">Datasets used for our offline training procedure of the neural leg kinematics model (i.e., obtain the offline learning model).</h3>
+    </div>
+
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <video poster="" id="tree" autoplay controls muted loop height="100%">
+          <!-- Your video here -->
+          <source src="static/videos/lio_with_mid360_editted.mp4"
+          type="video/mp4">
+        </video>
+        <h2 class="subtitle" style="text-align: left;">
+          In offline training procedure only, LiDAR-IMU odometry with the omnidirectional FOV LiDAR (Livox MID-360) is used to obtain the reference twist (output of the neural leg kinematics model).
+        </h2>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="title">Online training of the neural leg kinematics model</h2>
+    <p>
+      As shown in the overview image, the online learning model of the neural leg kinematics model is trained online with odometry estimation to retain the both consistency. To jointly conduct odometry estimation and online learning on a unified factor graph, we propose the <em><strong>neural adaptive leg odometry factor</strong></em>, which is a constraint related to a robot pose and MLP parameter of the online learning model. Note that the offline learning is fixed during the odometry estimation (online learning procedure).
+    </p>
+    <p>
+      The objective function is defined by the sum of LiDAR-based (Matching cost factor), IMU-based (IMU preintegration factor), the neural leg kinematics model-based motion constraints (neural adaptive leg odometry factor), and some constraints (e.g., prior factor) as follows. Therefore, we optimize this objective function with ISAM2 optimizer to perform our state estimation.
+    </p>
+
+    <div class="container">
+      <img src="static/images/objective_function.png" alt="offline_learning_datasets" style="display: block; margin: 20px auto; max-width: 30%; height: auto;">
+    </div>
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="title">Experimental results of odometry estimation and online training of the neural leg kinematics model</h2>
+
+    <p>The proposed odometry estimation algorithm was demonstrated with the narrow FOR LiDAR (Livox AVIA) to imitate severely featureless environments such as the following image.</p>
+    <div class="container" style="text-align: center;">
+      <img src="static/images/odometry_exp_condition.png" alt="odometry_exp_condition" style="display: block; margin: 20px auto; max-width: 80%; height: auto;">
+      <h3 class="subtitle" style="text-align: left; margin-top: 10px; margin-bottom: 40px; max-width: 80%; margin-left: auto; margin-right: auto;">
+        Experimental conditions of the proposed odometry estimation. Note that <em><strong>the omnidirectional FOV LiDAR was NOT used during odometry estimation (online learning phase)</strong></em>.
+      </h3>
+    </div>
+    
+    <p style="margin-top: 0;">The proposed method was evaluated based on two experiment sequences:</p>
+    <ul>
+      <li><span style="font-size: x-large; font-weight: bold;">(1) Sandy beach sequence:</span> Deformable terrains and extremely featureless environments.</li>
+    </ul>
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <video poster="" id="tree" autoplay controls muted loop height="100%">
+          <!-- Your video here -->
+          <source src="static/videos/sunahama_walk_no_black_converted.mp4"
+          type="video/mp4">
+        </video>
+        <h2 class="subtitle" style="text-align: left;">
+          The quadruped robot conducted odometry estimation in the deformable terrain, where the assumption leg robot's kinematics-based motion constraints are corrupted.
+        </h2>
+      </div>
+    </div>
+    <div class="container" style="text-align: center;">
+      <img src="static/images/sunahama_degeneration.png" alt="Sunahama degeneration visualization" style="display: block; margin: 10px auto; max-width: 68%; height: auto;">
+      <h3 class="subtitle" style="text-align: center; margin-top: 5px; margin-bottom: 0px; max-width: 68%; margin-left: auto; margin-right: auto;">
+        LiDAR point clouds is degenerated severely due to extremely featureless environments.
+      </h3>
+    </div>
+
+
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <video poster="" id="tree" autoplay controls muted loop height="100%">
+          <!-- Your video here -->
+          <source src="static/videos/weight_load_changes_sunaham.mp4"
+          type="video/mp4">
+        </video>
+        <h2 class="subtitle" style="text-align: left;">
+          The external weight load (3kg) was removed in the middle of the experiment to demonstrate the network's adaptability to changes in robot weight load. Tactile information (foot reaction force)-based motion prediction can be conducted by dividing the reaction force by the robot mass; thus, adaptability to the robot mass is needed for the neural leg kinematics model.
+        </h2>
+      </div>
+    </div>
+    <div class="hero-body">
+      <video poster="" controls height="100%">
+        <source src="static/videos/RAL2024_sunahama_part_HD.mp4" type="video/mp4">
+      </video>
+    </div>
+
+<!-- (2) Campus journey sequence: -->
+    <ul>
+      <li><span style="font-size: x-large; font-weight: bold;">(2) Campus journey sequence:</span> Terrain condition changes and featureless environments.</li>
+    </ul>
+    <div class="container" style="text-align: center;">
+      <img src="static/images/campus degeneartion.png" alt="Campus degeneration visualization" style="display: block; margin: 10px auto; max-width: 85%; height: auto;">
+      <h3 class="subtitle" style="text-align: left; margin-top: 5px; max-width: 85%; margin-left: auto; margin-right: auto;">
+        Terrain condition was changed sequentially, 1) Asphalt, 2) Gravel (deformable terrain), and 3) Grass in the campus sequence. Furthermore, areas where point clouds degenerate are included in these environments.
+      </h3>
+    </div>
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <video poster="" id="tree" autoplay controls muted loop height="100%">
+          <!-- Your video here -->
+          <source src="static/videos/campus_weight_changes_x4.mp4"
+          type="video/mp4">
+        </video>
+        <h2 class="subtitle" style="text-align: left;">
+          The 3kg of the external weight load is removed in the middle of this experiment. Adaptability to the robot's weight load in the neural adaptive leg kinematics model is crucial for effectively incorporating tactile information (foot reaction force) into our learning model.
+        </h2>
+      </div>
+    </div>
+
+    <div class="hero-body">
+      <video poster="" controls height="100%">
+        <source src="static/videos/RAL2024_campus_1824_1026.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <!-- <video src="static/videos/sunahama_walk_no_black.mp4" controls loop autoplay muted style="display: block; margin: 20px auto; max-width: 100%; height: auto;"></video> -->
+    <h2 class="title is-4 has-text-centered">ATEs and RTEs of the Odometry Algorithms</h2>
+    <table class="table is-bordered is-striped is-hoverable is-fullwidth has-text-centered">
+      <thead>
+        <tr>
+          <th rowspan="2">Method/Sequence</th>
+          <th colspan="2">Campus</th>
+          <th colspan="2">Sandy Beach</th>
+        </tr>
+        <tr>
+          <th>ATE [m]</th>
+          <th>RTE [m]</th>
+          <th>ATE [m]</th>
+          <th>RTE [m]</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Ours</td>
+          <td><strong>0.29</strong> &plusmn; 0.12</td>
+          <td class="has-background-light"><strong>0.13</strong> &plusmn; 0.04</td>
+          <td><strong>0.08</strong> &plusmn; 0.05</td>
+          <td class="has-background-light"><strong>0.12</strong> &plusmn; 0.04</td>
+        </tr>
+        <tr>
+          <td>Ours w/o online learning</td>
+          <td>0.36 &plusmn; 0.17</td>
+          <td class="has-background-light">0.17 &plusmn; 0.07</td>
+          <td>0.90 &plusmn; 0.70</td>
+          <td class="has-background-light">0.20 &plusmn; 0.10</td>
+        </tr>
+        <tr>
+          <td>Ours w/o tactile info.</td>
+          <td>0.63 &plusmn; 0.30</td>
+          <td class="has-background-light">0.15 &plusmn; 0.06</td>
+          <td>0.12 &plusmn; 0.06</td>
+          <td class="has-background-light">0.12 &plusmn; 0.04</td>
+        </tr>
+        <tr>
+          <td>FAST-LIO2</td>
+          <td>Corrupted</td>
+          <td class="has-background-light">Corrupted</td>
+          <td>Corrupted</td>
+          <td class="has-background-light">Corrupted</td>
+        </tr>
+        <tr>
+          <td>Unitree odometry w/ LIO</td>
+          <td>0.57 &plusmn; 0.32</td>
+          <td class="has-background-light">0.15 &plusmn; 0.06</td>
+          <td>No record</td>
+          <td class="has-background-light">No record</td>
+        </tr>
+        <tr>
+          <td>Unitree odometry</td>
+          <td>0.80 &plusmn; 0.46</td>
+          <td class="has-background-light">0.17 &plusmn; 0.06</td>
+          <td>No record</td>
+          <td class="has-background-light">No record</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="title">Accuracy evaluation of the standalone network with offline training datasets</h2>
+    <p>
+      In addition to the online learning (odometry estimation) results, we show the offline training results to claim the further effectiveness of incorporating tactile information into a kinematics model of legged robots. The 10 % of our offline training datasets were used as validation data during the offline training procedure.
+    </p>
+
+    <p>
+      We compare the accuracy between the following two methods in the ablation study.
+    </p>
+      <ul style="list-style-type: disc;">
+        <li>Ours: The network inputs are joint encoders, IMU data, joint torques, foot force sensor values, as shown in our paper.</li>
+        <li>Ours w/o tactile info.: The network inputs are joint encoders, IMU data only. </li>
+      </ul>
+
+    <div class="container">
+      <img src="static/images/offline_training_results.png" alt="offline_training_results" style="display: block; margin: 20px auto; max-width: 100%; height: auto;">
+      <h3 class="subtitle" style="text-align: center;">RTEs per 1m for the ablation study to demonstrate effectiveness of incorporating tactile information into a kinematics model of legged robots.</h3>
+    </div>
+
+    <p style="margin-top: 30px;">
+      As shown in the above offline training results, <strong>the translational accuracy of the proposed network (RTE Mean: 0.06 m) outperforms those of Ours w/o tactile info. (RTE Mean: 0.10 m) for all environment sequences.</strong> We consider the reason for this result is that the proposed network can take into account terrain-dependent phenomena (foot slippage, deformations of legs and/or grounds) compared to Ours w/o tactile info., thanks to tactile information, which is directly related to terrain-dependent values (e.g., foot sinkage, friction coefficients, and soil parameters) [3].
+    </p>
+    
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="title">References</h2>
+    <ul>
+      <li>[1] M. Fourmy, T. Flayols, P.-A. Léziart, N. Mansard, and J. Solà, "Contact forces preintegration for estimation in legged robotics using factor graphs," in <em>2021 IEEE International Conference on Robotics and Automation (ICRA)</em>, 2021, pp. 1372–1378.</li>
+      <li>[2] J. Kang, H. Kim, and K.-S. Kim, "VIEW: Visual-inertial external wrench estimator for legged robot," <em>IEEE Robotics and Automation Letters</em>, 2023, pp. 8366–8377.</li>
+      <li>[3] A. Vanderkop, N. Kottege, T. Peynot, and P. Corke, "A novel model of interaction dynamics between legged robots and deformable terrain," in <em>2022 International Conference on Robotics and Automation (ICRA)</em>, 2022, pp. 6635–6641.</li>
+      <!-- <li>[3] D. Wisth, M. Camurri, and M. Fallon, "VILENS: Visual, inertial, lidar, and leg odometry for all-terrain legged robots," <em>IEEE Transactions on Robotics</em>, vol. 39, no. 1, pp. 309–326, 2022.</li>
+      <li>[4] T. Okawara, K. Koide, S. Oishi, M. Yokozuka, A. Banno, K. Uno, and K. Yoshida, "Tightly-coupled LiDAR-IMU-wheel odometry with an online neural kinematic model learning via factor graph optimization," <em>arXiv preprint arXiv:2407.08907</em>, 2024.</li> -->
+    </ul>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="content has-text-centered">
+    <p>
+      This project page was created using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a>.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
