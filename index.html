@@ -112,7 +112,7 @@
       As shown in the overview image, the online learning model of the neural leg kinematics model is trained online with odometry estimation to retain the both consistency. To jointly conduct odometry estimation and online learning on a unified factor graph, we propose the <em><strong>neural adaptive leg odometry factor</strong></em>, which is a constraint related to a robot pose and MLP parameter of the online learning model. Note that the offline learning is fixed during the odometry estimation (online learning procedure).
     </p>
     <p>
-      The objective function <em>e</em><sup>ALL</sup> is defined by the sum of LiDAR-based (Matching cost factor), IMU-based (IMU preintegration factor), the neural leg kinematics model-based motion constraints (neural adaptive leg odometry factor), and some constraints (e.g., prior factor) as follows. Therefore, we optimize this objective function <em>e</em><sup>ALL</sup> with ISAM2 optimizer to perform our state estimation.
+      The objective function <em>e</em><sup>ALL</sup> is defined by the sum of LiDAR-based (Matching cost factor), IMU-based (IMU preintegration factor), the neural leg kinematics model-based motion constraints (neural adaptive leg odometry factor), and some constraints (e.g., prior factor) as follows. See the paper for details of each error term. Therefore, we optimize this objective function <em>e</em><sup>ALL</sup> with ISAM2 optimizer to perform our state estimation.
     </p>
 
     <div class="container">
@@ -169,11 +169,11 @@
         </h2>
       </div>
     </div>
-    <div class="hero-body">
+    <!-- <div class="hero-body">
       <video poster="" controls height="100%">
         <source src="static/videos/RAL2024_sunahama_part_HD.mp4" type="video/mp4">
       </video>
-    </div>
+    </div> -->
 
 <!-- (2) Campus journey sequence: -->
     <ul>
@@ -198,11 +198,11 @@
       </div>
     </div>
 
-    <div class="hero-body">
+    <!-- <div class="hero-body">
       <video poster="" controls height="100%">
         <source src="static/videos/RAL2024_campus_1824_1026.mp4" type="video/mp4">
       </video>
-    </div>
+    </div> -->
 
     <h2 class="title is-4 has-text-centered">ATEs and RTEs of the Odometry Algorithms</h2>
     <table class="table is-bordered is-striped is-hoverable is-fullwidth has-text-centered">
