@@ -112,7 +112,7 @@
       As shown in the overview image, the online learning model of the neural leg kinematics model is trained online with odometry estimation to retain the both consistency. To jointly conduct odometry estimation and online learning on a unified factor graph, we propose the <em><strong>neural adaptive leg odometry factor</strong></em>, which is a constraint related to a robot pose and MLP parameter of the online learning model. Note that the offline learning is fixed during the odometry estimation (online learning procedure).
     </p>
     <p>
-      The objective function <em>e</em><sup>ALL</sup> is defined by the sum of LiDAR-based (Matching cost factor), IMU-based (IMU preintegration factor), the neural leg kinematics model-based motion constraints (neural adaptive leg odometry factor), and some constraints (e.g., prior factor) as follows. See the paper for details of each error term. Therefore, we optimize this objective function <em>e</em><sup>ALL</sup> with ISAM2 optimizer to perform our state estimation.
+      The objective function <em>e</em><sup>ALL</sup> is defined by the sum of LiDAR-based (Matching cost factor), IMU-based (IMU preintegration factor), the neural leg kinematics model-based motion constraints (neural adaptive leg odometry factor), and some constraints (e.g., prior factor) as follows. See the paper for details of each error term. Therefore, we optimize this objective function <em>e</em><sup>ALL</sup> using the ISAM2 optimizer to perform our state estimation.
     </p>
 
     <div class="container">
