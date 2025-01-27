@@ -139,7 +139,7 @@
     </div>
     
     <p style="margin-top: 0;">The proposed method was evaluated based on two experiment sequences:</p>
-    <ul>
+    <ul style="margin-top: 25px;">
       <li><span style="font-size: x-large; font-weight: bold;">(1) Sandy beach sequence:</span> Deformable terrains and extremely featureless environments.</li>
     </ul>
     <div class="container is-max-desktop">
@@ -179,8 +179,15 @@
       </video>
     </div> -->
 
+    <div class="container" style="text-align: center;">
+      <img src="static/images/sunahama_results.png" alt="Sunahama results" style="display: block; margin: 10px auto; max-width: 85%; height: auto;">
+      <h2 class="subtitle" style="text-align: left;">
+        Odometry estimation results of beach sequence. The map was constructed by aligning the raw point cloud with the robot poses estimated through our odometry estimation. We can see that half of the point clouds were detected as degenerated.
+      </h2>
+    </div>
+
 <!-- (2) Campus journey sequence: -->
-    <ul>
+    <ul style="margin-top: 25px;">
       <li><span style="font-size: x-large; font-weight: bold;">(2) Campus journey sequence:</span> Terrain condition changes and featureless environments.</li>
     </ul>
     <div class="container" style="text-align: center;">
@@ -200,6 +207,13 @@
           The 3kg of the external weight load is removed in the middle of this experiment. Adaptability to the robot's weight load in the neural adaptive leg kinematics model is crucial for effectively incorporating tactile information (foot reaction force) into our learning model.
         </h2>
       </div>
+    </div>
+
+    <div class="container" style="text-align: center;">
+      <img src="static/images/campus_results.png" alt="Campus results" style="display: block; margin: 10px auto; max-width: 85%; height: auto;">
+      <h2 class="subtitle" style="text-align: left;">
+        Odometry estimation results of campus journey sequence. The map was constructed by aligning the raw point cloud with the robot poses estimated through our odometry estimation. We can see that many point clouds were detected as degenerated.
+      </h2>
     </div>
 
     <!-- <div class="hero-body">
