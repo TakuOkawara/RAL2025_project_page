@@ -303,7 +303,7 @@
     </p>
       <ul style="list-style-type: disc;">
         <li>Ours: The network inputs are joint encoders, IMU data, joint torques, foot force sensor values, as shown in our paper.</li>
-        <li>Ours w/o tactile info.: The network inputs are only joint encoders and IMU data similar to related works [4][5], which do not incorporate tactile information directly. </li>
+        <li>Ours w/o tactile info.: The network inputs are only joint encoders and IMU data similar to related works [3][4], which do not incorporate tactile information directly. </li>
       </ul>
 
     <div class="container">
@@ -312,7 +312,7 @@
     </div>
 
     <p style="margin-top: 30px;">
-      As shown in the above offline training results, <strong>the translational accuracy of the proposed network (RTE Mean: 0.06 m) outperforms those of Ours w/o tactile info. (RTE Mean: 0.10 m) for all environment sequences.</strong> We consider the reason for this result is that the proposed network can take into account terrain-dependent phenomena (foot slippage, deformations of legs and/or grounds) compared to Ours w/o tactile info., thanks to tactile information, which is directly related to terrain-dependent values (e.g., foot sinkage, friction coefficients, and soil parameters) [3].
+      As shown in the above offline training results, <strong>the translational accuracy of the proposed network (RTE Mean: 0.06 m) outperforms those of Ours w/o tactile info. (RTE Mean: 0.10 m) for all environment sequences.</strong> We consider the reason for this result is that the proposed network can take into account terrain-dependent phenomena (foot slippage, deformations of legs and/or grounds) compared to Ours w/o tactile info., thanks to tactile information, which is directly related to terrain-dependent values (e.g., foot sinkage, friction coefficients, and soil parameters) [5].
     </p>
     
   </div>
@@ -327,6 +327,7 @@
       <li>[3] J. Wasserman, A. Agarwal, R. Jangir, G. Chowdhary, D. Pathak, and A. Gupta, "Legolas: Deep leg-inertial odometry," <em>in Conference on
         Robot Learning (CoRL)</em>, 2024.</li>
       <li>[4] T. Okawara, K. Koide, S. Oishi, M. Yokozuka, A. Banno, K. Uno, and K. Yoshida, "Tightly-coupled LiDAR-IMU-wheel odometry with an online neural kinematic model learning via factor graph optimization", Robotics and Autonomous Systems, vol. 187, pp. 104929, 2025.</li>
+      <li>[5] A. Vanderkop, N. Kottege, T. Peynot, and P. Corke, "A novel model of interaction dynamics between legged robots and deformable terrain", in <em>2021 IEEE International Conference on Robotics and Automation (ICRA)</em>, 2021, pp. 1372–1378.</li>
     </ul>
   </div>
 </section>
