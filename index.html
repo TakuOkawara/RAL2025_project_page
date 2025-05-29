@@ -38,7 +38,7 @@
   <div class="container is-max-desktop">
     <div class="hero-body">
 
-      <p><strong>Please wait a few seconds if the videos are not played. Note that open this page on a PC, not a smart phone.</strong></p>
+      <p><strong>Please wait a few seconds</strong> if the videos are not played. Note that <strong>open this page on a PC</strong>, not a smart phone.</p>
 
       <video poster="" id="tree" autoplay controls muted loop height="80%">
         <!-- Your video here -->
@@ -57,7 +57,7 @@
     <p>To deal with these challenges, we presented an odometry estimation algorithm that fuses LiDAR-IMU constraints and online trainable leg kinematic constraints incorporating tactile information (<em><strong>neural leg kinematics model</strong></em>) in the proposed factor graph based on tightly coupled way. We propose the <em><strong>neural adaptive leg odometry factor</strong></em> to solve simultaneously solve odometry estimation and online training of the neural leg kinematics. This model's online training enhances its adaptability to changes in the weight loads of a legged robot and terrain conditions. This enables the effective utilization of foot tactile information (reaction forces) for motion prediction because foot reaction forces vary with both robot weight loads and terrain conditions. To balance accuracy and computational costs for training the network, we divided the model into two models trained online (<em><strong>online learning model</strong></em>) and offline (<em><strong>offline learning model</strong></em>).</p>
 
     <div class="container" style="text-align: center;">
-      <img src="static/images/overview.png" alt="Overview" style="display: block; margin: 20px auto; max-width: 91%; height: auto;">
+      <img src="static/images/overview.svg" alt="Overview" style="display: block; margin: 20px auto; max-width: 91%; height: auto;">
       <h3 class="subtitle" style="text-align: left; margin-top: 10px; margin-bottom: 20px; max-width: 91%; margin-left: auto; margin-right: auto;">
         Overview of the proposed method, which simultaneously solves <em><strong>odometry estimation</strong></em> and <em><strong>online training of the neural leg kinematics model</strong></em> on a unified factor graph.
       </h3>
@@ -291,32 +291,6 @@
   </div>
 </section>
 
-<section class="section has-background-light">
-  <div class="container">
-    <h2 class="title">Accuracy evaluation of the standalone network with offline training datasets</h2>
-    <p>
-      In addition to the online learning (odometry estimation) results, we show the offline training results to claim the further effectiveness of incorporating tactile information into a kinematics model of legged robots. The 10 % of our offline training datasets were used as validation data during the offline training procedure.
-    </p>
-
-    <p>
-      We compare the accuracy between the following two methods in the ablation study.
-    </p>
-      <ul style="list-style-type: disc;">
-        <li>Ours: The network inputs are joint encoders, IMU data, joint torques, foot force sensor values, as shown in our paper.</li>
-        <li>Ours w/o tactile info.: The network inputs are only joint encoders and IMU data similar to related works [3][4], which do not incorporate tactile information directly. </li>
-      </ul>
-
-    <div class="container">
-      <img src="static/images/offline_training_results.png" alt="offline_training_results" style="display: block; margin: 20px auto; max-width: 100%; height: auto;">
-      <h3 class="subtitle" style="text-align: left;">Translational and rotational RTEs per 1m for the ablation study. This result shows the effectiveness of incorporating tactile information into a kinematics model of legged robots.</h3>
-    </div>
-
-    <p style="margin-top: 30px;">
-      As shown in the above offline training results, <strong>the translational accuracy of the proposed network (RTE Mean: 0.06 m) outperforms those of Ours w/o tactile info. (RTE Mean: 0.10 m) for all environment sequences.</strong> We consider the reason for this result is that the proposed network can take into account terrain-dependent phenomena (foot slippage, deformations of legs and/or grounds) compared to Ours w/o tactile info., thanks to tactile information, which is directly related to terrain-dependent values (e.g., foot sinkage, friction coefficients, and soil parameters) [5].
-    </p>
-    
-  </div>
-</section>
 
 <section class="section">
   <div class="container">
@@ -324,10 +298,6 @@
     <ul>
       <li>[1] M. Fourmy, T. Flayols, P.-A. Léziart, N. Mansard, and J. Solà, "Contact forces preintegration for estimation in legged robotics using factor graphs," in <em>2021 IEEE International Conference on Robotics and Automation (ICRA)</em>, 2021, pp. 1372–1378.</li>
       <li>[2] J. Kang, H. Kim, and K.-S. Kim, "VIEW: Visual-inertial external wrench estimator for legged robot", <em>IEEE Robotics and Automation Letters</em>, 2023, pp. 8366–8377.</li>
-      <li>[3] J. Wasserman, A. Agarwal, R. Jangir, G. Chowdhary, D. Pathak, and A. Gupta, "Legolas: Deep leg-inertial odometry," <em>in Conference on
-        Robot Learning (CoRL)</em>, 2024.</li>
-      <li>[4] T. Okawara, K. Koide, S. Oishi, M. Yokozuka, A. Banno, K. Uno, and K. Yoshida, "Tightly-coupled LiDAR-IMU-wheel odometry with an online neural kinematic model learning via factor graph optimization", Robotics and Autonomous Systems, vol. 187, pp. 104929, Jan., 2025.</li>
-      <li>[5] A. Vanderkop, N. Kottege, T. Peynot, and P. Corke, "A novel model of interaction dynamics between legged robots and deformable terrain", in <em>2022 IEEE International Conference on Robotics and Automation (ICRA)</em>, 2022, pp. 1372–1378.</li>
     </ul>
   </div>
 </section>
