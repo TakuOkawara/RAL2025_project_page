@@ -39,13 +39,20 @@
 
 <section class="section has-background-light">
   <div class="container is-max-desktop">
-    <div class="hero-body" style="text-align: center;">
-      <!-- 論文リンク追加 -->
-      <p style="margin-bottom: 1em;">
+    <div class="hero-body" style="display: flex; flex-direction: column; align-items: center;">
+      
+      <!-- ボタン2つを横並びで配置 -->
+      <div style="display: flex; gap: 20px; justify-content: center; margin-bottom: 1em; flex-wrap: wrap;">
+        <!-- arXiv 論文リンク -->
         <a class="button is-link is-medium" href="https://arxiv.org/pdf/2506.09548" target="_blank">
           📄 Paper
         </a>
-      </p>
+
+        <!-- YouTube リンクボタン -->
+        <a class="button is-danger is-medium" href="https://www.youtube.com/watch?v=ZD5cR1u8Nc0" target="_blank">
+          ▶️ Video
+        </a>
+      </div>
 
       <!-- GIF動画 -->
       <img src="static/videos/RAL2025_Twitter.gif" alt="Cover animation" style="width:100%; height:auto;" />
