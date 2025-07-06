@@ -27,9 +27,11 @@
       <p class="subtitle" style="margin-top: 0.5em;">
         Taku Okawara, Kenji Koide, Aoki Takanose, Shuji Oishi, Masashi Yokozuka, Kentaro Uno, Kazuya Yoshida
       </p>
-      <p class="subtitle" style="margin-top: 0.5em;">
-        Tohoku University, AIST
+      <p class="subtitle" style="margin-top: 0.5em; display: flex; align-items: center; justify-content: center; gap: 15px;">
+        Tohoku University (The Space Robotics Lab), AIST
+        <img src="static/images/logo.JPG" alt="lab logos" style="height: 70px;">
       </p>
+
     </div>
   </div>
 </section>
@@ -74,7 +76,7 @@
 <section class="section">
   <div class="container">
     <h2 class="title">Overview</h2>
-    <p>Legged robots have significant potential for transportation and inspection tasks in challenging environments (e.g., rough terrain) thanks to their superior locomotion capabilities compared to wheeled robots. Featureless environments (e.g., tunnels, long corridors, alleys, lunar surfaces) and deformable terrains (e.g., sandy beaches and gravel) are challenging environments for exteroceptive sensors (e.g., LiDAR, camera)-based and kinematic models-based odometry estimation, respectively.</p>
+    <p>Legged robots have significant potential for transportation and inspection tasks in challenging environments (e.g., rough terrain) thanks to their superior locomotion capabilities compared to wheeled robots. Featureless environments (e.g., tunnels, long corridors, alleys, lunar surfaces) and deformable terrains (e.g., sandy beaches, lunar surfaces, and gravel) are challenging environments for exteroceptive sensors (e.g., LiDAR, camera)-based and kinematic models-based odometry estimation, respectively.</p>
     <p>To deal with these challenges, we presented an odometry estimation algorithm that fuses LiDAR-IMU constraints and online trainable leg kinematic constraints incorporating tactile information (<em><strong>neural leg kinematics model</strong></em>) in the proposed factor graph based on tightly coupled way. We propose the <em><strong>neural adaptive leg odometry factor</strong></em> to solve simultaneously solve odometry estimation and online training of the neural leg kinematics. This model's online training enhances its adaptability to changes in the weight loads of a legged robot and terrain conditions. This enables the effective utilization of foot tactile information (reaction forces) for motion prediction because foot reaction forces vary with both robot weight loads and terrain conditions. To balance accuracy and computational costs for training the network, we divided the model into two models trained online (<em><strong>online learning model</strong></em>) and offline (<em><strong>offline learning model</strong></em>).</p>
 
     <div class="container" style="text-align: center;">
